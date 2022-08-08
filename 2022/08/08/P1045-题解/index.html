@@ -18,22 +18,22 @@
   <meta name="author" content="WZH">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题意             给你两个长度为 $n$ 的数组 $a$，$b$（数组内元素两两不相同），求当 $\sum_{i&#x3D;1}^{n} (a_i-b_i)^2$ 最小时需要交换 $a$ 或 $b$ 内相邻元素的次数，结果对 $10^8-3$ 取模。$1\le n \le 10^5$$0\le a,b \le 2^{31}$             解答将 $\sum_{i&#x3D;">
+    <meta name="description" content="题意             给定一个 $P$，计算 $2^P-1$ 的位数和最后 $500$ 位数字。输出时每行输出 $50$ 位，共输出 $10$ 行，不足 $500$ 位时高位补 $0$。$1000&lt;P&lt;3100000$             解答先考虑如何计算 $2^P-1$ 的位数。 由于 $2^P$ 的末尾一定不是 $0$，所以 $2^P-1$ 和 $2^P$ 的位数相同">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P1966 题解">
-<meta property="og:url" content="http://example.com/2022/08/08/P1966-%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:title" content="P1045 题解">
+<meta property="og:url" content="http://example.com/2022/08/08/P1045-%E9%A2%98%E8%A7%A3/index.html">
 <meta property="og:site_name" content="WZH&#39;s blog">
-<meta property="og:description" content="题意             给你两个长度为 $n$ 的数组 $a$，$b$（数组内元素两两不相同），求当 $\sum_{i&#x3D;1}^{n} (a_i-b_i)^2$ 最小时需要交换 $a$ 或 $b$ 内相邻元素的次数，结果对 $10^8-3$ 取模。$1\le n \le 10^5$$0\le a,b \le 2^{31}$             解答将 $\sum_{i&#x3D;">
+<meta property="og:description" content="题意             给定一个 $P$，计算 $2^P-1$ 的位数和最后 $500$ 位数字。输出时每行输出 $50$ 位，共输出 $10$ 行，不足 $500$ 位时高位补 $0$。$1000&lt;P&lt;3100000$             解答先考虑如何计算 $2^P-1$ 的位数。 由于 $2^P$ 的末尾一定不是 $0$，所以 $2^P-1$ 和 $2^P$ 的位数相同">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-08-08T12:40:27.000Z">
-<meta property="article:modified_time" content="2022-08-08T13:26:17.946Z">
+<meta property="article:published_time" content="2022-08-08T13:25:45.000Z">
+<meta property="article:modified_time" content="2022-08-08T13:36:17.143Z">
 <meta property="article:author" content="WZH">
 <meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>P1966 题解 - WZH&#39;s blog</title>
+  <title>P1045 题解 - WZH&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="P1966 题解"></span>
+            <span id="subtitle" data-typed-text="P1045 题解"></span>
           
         </div>
 
@@ -249,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-08 20:40" pubdate>
-          星期一, 八月 8日 2022, 8:40 晚上
+        <time datetime="2022-08-08 21:25" pubdate>
+          星期一, 八月 8日 2022, 9:25 晚上
         </time>
       </span>
     
@@ -262,7 +262,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.1k 字
+          1.4k 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
           <!-- compatible with older versions-->
-          18 分钟
+          12 分钟
         
       </span>
     
@@ -320,30 +320,24 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">P1966 题解</h1>
+            <h1 style="display: none">P1045 题解</h1>
             
             
               <div class="markdown-body">
                 
                 <h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><div class="note note-secondary">
-            <p>给你两个长度为 $n$ 的数组 $a$，$b$（数组内元素两两不相同），求当 $\sum_{i&#x3D;1}^{n} (a_i-b_i)^2$ 最小时需要交换 $a$ 或 $b$ 内<strong>相邻</strong>元素的次数，结果对 $10^8-3$ 取模。</p><p>$1\le n \le 10^5$</p><p>$0\le a,b \le 2^{31}$</p>
+            <p>给定一个 $P$，计算 $2^P-1$ 的位数和最后 $500$ 位数字。</p><p>输出时每行输出 $50$ 位，共输出 $10$ 行，不足 $500$ 位时高位补 $0$。</p><p>$1000&lt;P&lt;3100000$</p>
           </div>
 
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>将 $\sum_{i&#x3D;1}^{n} (a_i-b_i)^2$ 化为 $\sum_{i&#x3D;1}^{n} (a_i^2+b_i^2-2 a_i b_i)$，再化为 $\sum_{i&#x3D;1}^{n} (a_i^2+b_i^2)-\sum_{i&#x3D;1}^{n} (2 a_i b_i)$，最后可以表示为：$\sum_{i&#x3D;1}^{n} (a_i^2+b_i^2)-2\sum_{i&#x3D;1}^{n} a_i b_i$。</p>
-<p>由于 $\sum_{i&#x3D;1}^{n} (a_i^2+b_i^2)$ 为定值，那么问题就转换为当 $\sum_{i&#x3D;1}^{n} a_i b_i$ 最大时要交换相邻元素的次数。</p>
-<p>这里给个结论：将两个序列从小到大（或从大到小）排序后，对于每个 $i$，将 $a_i$ 与 $b_i$ 配对，得到的 $\sum_{i&#x3D;1}^{n} a_i b_i$ 最大。</p>
-<div class="note note-success">
-            <p>证明如下：</p><p>设有序序列 $a$ 和 $b$，取 $a_1&lt;a_2$，$b_1&lt;b_2$，所以 $a_1(b_2-b_1)&lt;a_2(b_2-b_1)$，即 $a_1 b_2-a_1 b_1&lt;a_2 b_2-a_2 b_1$，移项得：$a_1 b_2+a_2 b_1&lt;a_1 b_1+a_2 b_2$。</p><p>由于<strong>乱序就是将顺序不断交换打乱的过程</strong>，所以符合上述结论，因此得证。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>先考虑如何计算 $2^P-1$ 的位数。</p>
+<p>由于 $2^P$ 的末尾一定不是 $0$，所以 $2^P-1$ 和 $2^P$ 的位数相同，即可考虑计算 $2^P$ 的位数。</p>
+<p>由换底公式可知：$2^P&#x3D;10^{P\times \log_{10} 2}$，即可求得。</p>
+<p>至于 $2^P-1$ 的后 $500$ 位，高精度快速幂求之即可。</p>
+<div class="note note-danger">
+            <p>注意，高精度乘法需要开两倍空间。</p>
           </div>
 
-<p>由于数据范围过大，所以要将数据离散化。</p>
-<p>之后，根据证明的结论，将数组从小到大（或从大到小）排序。</p>
-<p>此时问题变为了将离散化后的数组怎样用最少的交换次数使它们相同。</p>
-<p>然后，新建序列。</p>
-<p>假如我们现在有离散化后的序列 $a&#x3D;{4,1,2,3}$，$b&#x3D;{2,3,1,4}$。</p>
-<p>令 $c[a[i]]&#x3D;b[i]$（这就相当于以 $a$ 为关键字对 $b$ 进行排序），然后易得：若 $a[i]&#x3D;b[i]$，则 $c[a[i]]&#x3D;b[i]&#x3D;a[i]$，即此时 $c[i]&#x3D;i$。</p>
-<p>也就是说为了达到目的，我们需要让 $c$ 升序排序，问题就变为将 $c$ 升序排序的最少交换次数，就是逆序对，归并求之即可。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N=<span class="hljs-number">5e5</span>+<span class="hljs-number">4</span>,P=<span class="hljs-number">1e8</span><span class="hljs-number">-3</span>;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">arr</span><br>&#123;<br>	<span class="hljs-type">int</span> num,x;<br>&#125;b[N],c[N];<br><span class="hljs-type">int</span> a[N],f[N];<br><span class="hljs-type">long</span> <span class="hljs-type">long</span> ans;<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(arr X,arr Y)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">return</span> X.x&lt;Y.x;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Sort</span><span class="hljs-params">(<span class="hljs-type">int</span> l,<span class="hljs-type">int</span> r)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">if</span>(l==r)<span class="hljs-keyword">return</span> ;<br>	<span class="hljs-type">int</span> mid=(l+r)/<span class="hljs-number">2</span>,i=l,j=mid+<span class="hljs-number">1</span>,t=l;<br>	<span class="hljs-built_in">Sort</span>(l,mid);<span class="hljs-built_in">Sort</span>(mid+<span class="hljs-number">1</span>,r);<br>	<span class="hljs-keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=r)<br>		<span class="hljs-keyword">if</span>(a[i]&lt;=a[j])f[t++]=a[i++];<br>			<span class="hljs-keyword">else</span> f[t++]=a[j++],ans+=mid-i+<span class="hljs-number">1</span>,ans%=P;<br>	<span class="hljs-keyword">while</span>(i&lt;=mid)f[t++]=a[i++];<br>	<span class="hljs-keyword">while</span>(j&lt;=r)f[t++]=a[j++];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=l;i&lt;=r;i++)a[i]=f[i];<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">register</span> <span class="hljs-type">int</span> x=<span class="hljs-number">0</span>,f=<span class="hljs-number">0</span>;<span class="hljs-keyword">register</span> <span class="hljs-type">char</span> ch=<span class="hljs-built_in">getchar</span>();<br>	<span class="hljs-keyword">while</span>(ch&lt;<span class="hljs-string">&#x27;0&#x27;</span> || ch&gt;<span class="hljs-string">&#x27;9&#x27;</span>)f|=ch==<span class="hljs-string">&#x27;-&#x27;</span>,ch=<span class="hljs-built_in">getchar</span>();<br>	<span class="hljs-keyword">while</span>(ch&gt;=<span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; ch&lt;=<span class="hljs-string">&#x27;9&#x27;</span>)x=(x&lt;&lt;<span class="hljs-number">3</span>)+(x&lt;&lt;<span class="hljs-number">1</span>)+(ch^<span class="hljs-number">48</span>),ch=<span class="hljs-built_in">getchar</span>();<br>	<span class="hljs-keyword">return</span> f?-x:x;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> n=<span class="hljs-built_in">read</span>();<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)b[i].x=<span class="hljs-built_in">read</span>(),b[i].num=i;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)c[i].x=<span class="hljs-built_in">read</span>(),c[i].num=i;<br>	<span class="hljs-built_in">sort</span>(b+<span class="hljs-number">1</span>,b+n+<span class="hljs-number">1</span>,cmp);<span class="hljs-built_in">sort</span>(c+<span class="hljs-number">1</span>,c+n+<span class="hljs-number">1</span>,cmp);<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)a[b[i].num]=c[i].num;<br>	<span class="hljs-built_in">Sort</span>(<span class="hljs-number">1</span>,n);<br>	cout&lt;&lt;ans;<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/bilicard.css" type="text/css">
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">int</span> f[<span class="hljs-number">1004</span>],a[<span class="hljs-number">1004</span>],b[<span class="hljs-number">1004</span>];<br><span class="hljs-type">void</span> _1()<br>&#123;<br>	<span class="hljs-built_in">memset</span>(b,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(b));<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">500</span>;i++)<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=<span class="hljs-number">500</span>;j++)<br>			b[i+j<span class="hljs-number">-1</span>]+=a[i]*f[j];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">500</span>;i++)<br>	&#123;<br>		b[i+<span class="hljs-number">1</span>]+=b[i]/<span class="hljs-number">10</span>;<br>		b[i]%=<span class="hljs-number">10</span>;<br>	&#125;<br>	<span class="hljs-built_in">memcpy</span>(a,b,<span class="hljs-built_in">sizeof</span>(a));<br>&#125;<br><span class="hljs-type">void</span> _2()<br>&#123;<br>	<span class="hljs-built_in">memset</span>(b,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(b));<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">500</span>;i++)<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=<span class="hljs-number">500</span>;j++)<br>			b[i+j<span class="hljs-number">-1</span>]+=f[i]*f[j];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">500</span>;i++)<br>	&#123;<br>		b[i+<span class="hljs-number">1</span>]+=b[i]/<span class="hljs-number">10</span>;<br>		b[i]%=<span class="hljs-number">10</span>;<br>	&#125;<br>	<span class="hljs-built_in">memcpy</span>(f,b,<span class="hljs-built_in">sizeof</span>(f));<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">register</span> <span class="hljs-type">int</span> x=<span class="hljs-number">0</span>,f=<span class="hljs-number">0</span>;<span class="hljs-keyword">register</span> <span class="hljs-type">char</span> ch=<span class="hljs-built_in">getchar</span>();<br>	<span class="hljs-keyword">while</span>(ch&lt;<span class="hljs-string">&#x27;0&#x27;</span> || ch&gt;<span class="hljs-string">&#x27;9&#x27;</span>)f|=ch==<span class="hljs-string">&#x27;-&#x27;</span>,ch=<span class="hljs-built_in">getchar</span>();<br>	<span class="hljs-keyword">while</span>(ch&gt;=<span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; ch&lt;=<span class="hljs-string">&#x27;9&#x27;</span>)x=(x&lt;&lt;<span class="hljs-number">3</span>)+(x&lt;&lt;<span class="hljs-number">1</span>)+(ch^<span class="hljs-number">48</span>),ch=<span class="hljs-built_in">getchar</span>();<br>	<span class="hljs-keyword">return</span> f?-x:x;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> p=<span class="hljs-built_in">read</span>();<br>	cout&lt;&lt;(<span class="hljs-type">int</span>)(<span class="hljs-built_in">log10</span>(<span class="hljs-number">2</span>)*p+<span class="hljs-number">1</span>)&lt;&lt;endl;<br>	a[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;f[<span class="hljs-number">1</span>]=<span class="hljs-number">2</span>;<br>	<span class="hljs-keyword">while</span>(p!=<span class="hljs-number">0</span>)<br>	&#123;<br>		<span class="hljs-keyword">if</span>(p%<span class="hljs-number">2</span>==<span class="hljs-number">1</span>)_1();<br>		p/=<span class="hljs-number">2</span>;<br>		_2();<br>	&#125;<br>	a[<span class="hljs-number">1</span>]-=<span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">500</span>;i&gt;=<span class="hljs-number">1</span>;i--)<br>		<span class="hljs-keyword">if</span>(i!=<span class="hljs-number">500</span> &amp;&amp; i%<span class="hljs-number">50</span>==<span class="hljs-number">0</span>)cout&lt;&lt;endl&lt;&lt;a[i];<br>			<span class="hljs-keyword">else</span> cout&lt;&lt;a[i];<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/bilicard.css" type="text/css">
                 
               </div>
             
@@ -367,8 +361,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>P1966 题解</div>
-      <div>http://example.com/2022/08/08/P1966-题解/</div>
+      <div>P1045 题解</div>
+      <div>http://example.com/2022/08/08/P1045-题解/</div>
     </div>
     <div class="license-meta">
       
@@ -410,18 +404,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/08/P1045-%E9%A2%98%E8%A7%A3/" title="P1045 题解">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">P1045 题解</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/08/%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="线段树学习笔记">
-                        <span class="hidden-mobile">线段树学习笔记</span>
+                      <a href="/2022/08/08/P1966-%E9%A2%98%E8%A7%A3/" title="P1966 题解">
+                        <span class="hidden-mobile">P1966 题解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
