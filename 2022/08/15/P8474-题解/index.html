@@ -18,22 +18,22 @@
   <meta name="author" content="WZH">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题意             给定一个 $P$，计算 $2^P-1$ 的位数和最后 $500$ 位数字。输出时每行输出 $50$ 位，共输出 $10$ 行，不足 $500$ 位时高位补 $0$。$1000&lt;P&lt;3100000$             解答先考虑如何计算 $2^P-1$ 的位数。 由于 $2^P$ 的末尾一定不是 $0$，所以 $2^P-1$ 和 $2^P$ 的位数相同">
+    <meta name="description" content="题意             设 $\sigma$ 为任意一个长度为 $n$ 的排列，$\tau(\sigma)$ 表示其中的逆序对个数，请求出 $\sum_\sigma 2^{\tau(\sigma)}$ 对 $(10^9+7)$ 取模的结果。             解答题目可能有点难理解，先看样例。 12In:3Out:21  样例解释： $\sum_{\sigma}2^{\tau(\sig">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P1045 题解">
-<meta property="og:url" content="http://qwqzwhy.github.io/2022/08/08/P1045-%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:title" content="P8474 题解">
+<meta property="og:url" content="http://qwqzwhy.github.io/2022/08/15/P8474-%E9%A2%98%E8%A7%A3/index.html">
 <meta property="og:site_name" content="WZH&#39;s blog">
-<meta property="og:description" content="题意             给定一个 $P$，计算 $2^P-1$ 的位数和最后 $500$ 位数字。输出时每行输出 $50$ 位，共输出 $10$ 行，不足 $500$ 位时高位补 $0$。$1000&lt;P&lt;3100000$             解答先考虑如何计算 $2^P-1$ 的位数。 由于 $2^P$ 的末尾一定不是 $0$，所以 $2^P-1$ 和 $2^P$ 的位数相同">
+<meta property="og:description" content="题意             设 $\sigma$ 为任意一个长度为 $n$ 的排列，$\tau(\sigma)$ 表示其中的逆序对个数，请求出 $\sum_\sigma 2^{\tau(\sigma)}$ 对 $(10^9+7)$ 取模的结果。             解答题目可能有点难理解，先看样例。 12In:3Out:21  样例解释： $\sum_{\sigma}2^{\tau(\sig">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-08-08T13:25:45.000Z">
-<meta property="article:modified_time" content="2022-08-14T07:57:01.554Z">
+<meta property="article:published_time" content="2022-08-15T09:33:47.000Z">
+<meta property="article:modified_time" content="2022-08-15T09:59:31.040Z">
 <meta property="article:author" content="WZH">
 <meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>P1045 题解 - WZH&#39;s blog</title>
+  <title>P8474 题解 - WZH&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="P1045 题解"></span>
+            <span id="subtitle" data-typed-text="P8474 题解"></span>
           
         </div>
 
@@ -249,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-08 21:25" pubdate>
-          星期一, 八月 8日 2022, 9:25 晚上
+        <time datetime="2022-08-15 17:33" pubdate>
+          星期一, 八月 15日 2022, 5:33 下午
         </time>
       </span>
     
@@ -320,24 +320,38 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">P1045 题解</h1>
+            <h1 style="display: none">P8474 题解</h1>
             
             
               <div class="markdown-body">
                 
                 <h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><div class="note note-secondary">
-            <p>给定一个 $P$，计算 $2^P-1$ 的位数和最后 $500$ 位数字。</p><p>输出时每行输出 $50$ 位，共输出 $10$ 行，不足 $500$ 位时高位补 $0$。</p><p>$1000&lt;P&lt;3100000$</p>
+            <p>设 $\sigma$ 为任意一个长度为 $n$ 的排列，$\tau(\sigma)$ 表示其中的逆序对个数，请求出 $\sum_\sigma 2^{\tau(\sigma)}$ 对 $(10^9+7)$ 取模的结果。</p>
           </div>
 
-<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>先考虑如何计算 $2^P-1$ 的位数。</p>
-<p>由于 $2^P$ 的末尾一定不是 $0$，所以 $2^P-1$ 和 $2^P$ 的位数相同，即可考虑计算 $2^P$ 的位数。</p>
-<p>由换底公式可知：$2^P&#x3D;10^{P\times \log_{10} 2}$，即可求得。</p>
-<p>至于 $2^P-1$ 的后 $500$ 位，高精度快速幂求之即可。</p>
-<div class="note note-danger">
-            <p>注意，高精度乘法需要开两倍空间。</p>
+<h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><p>题目可能有点难理解，先看样例。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">In:3<br>Out:21<br></code></pre></td></tr></table></figure>
+
+<p>样例解释：</p>
+<p>$\sum_{\sigma}2^{\tau(\sigma)} &#x3D; 2^{\tau(\left \langle 1,2,3 \right \rangle  )}+2^{\tau(\left \langle 1,3,2 \right \rangle)}+2^{\left \langle 2,1,3 \right \rangle)}+2^{\tau(\left \langle 2,3,1 \right \rangle)}+2^{\tau(\left \langle 3,1,2 \right \rangle)}+2^{\tau(\left \langle 3,2,1 \right \rangle)}$</p>
+<p>$&#x3D; 2^0+2^1+2^1+2^2+2^2+2^3$</p>
+<p>$&#x3D; 21.$</p>
+<p>接下来讲做法。</p>
+<p>枚举小数值，不难发现，当 $n&#x3D;1$ 时，结果为 $1$，当 $n&#x3D;2$ 时，结果为 $3$，当 $n&#x3D;4$ 时，结果为 $315$。</p>
+<p>容易发现 $315&#x3D;1\times 3\times 7\times 15$。</p>
+<p>找找规律看？</p>
+<p>$1&#x3D;2^1-1$</p>
+<p>$3&#x3D;2^2-1$</p>
+<p>$7&#x3D;2^3-1$</p>
+<p>$15&#x3D;2^4-1$</p>
+<p>不难想到规律即为：$\prod_{i&#x3D;1}^{n}{2^i-1}$。</p>
+<div class="note note-info">
+            <p>数学证明如下：</p><p>令 $f(i)$ 表示 $n&#x3D;i$ 时的答案。</p><p>考虑转移，不难想到转移即为 $f(i)&#x3D;\sum_{\sigma_1&#x3D;1}^{i}{2^{\sigma_1-1}f(i-1)}$。</p><p>进一步转换：$f(i)&#x3D;(2^i-1)f(i-1)$。</p><p>最后 $f(n)$ 即为：$\prod_{i&#x3D;1}^{n}{2^i-1}$。</p><p>证毕。</p>
           </div>
 
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">int</span> f[<span class="hljs-number">1004</span>],a[<span class="hljs-number">1004</span>],b[<span class="hljs-number">1004</span>];<br><span class="hljs-type">void</span> _1()<br>&#123;<br>	<span class="hljs-built_in">memset</span>(b,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(b));<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">500</span>;i++)<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=<span class="hljs-number">500</span>;j++)<br>			b[i+j<span class="hljs-number">-1</span>]+=a[i]*f[j];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">500</span>;i++)<br>	&#123;<br>		b[i+<span class="hljs-number">1</span>]+=b[i]/<span class="hljs-number">10</span>;<br>		b[i]%=<span class="hljs-number">10</span>;<br>	&#125;<br>	<span class="hljs-built_in">memcpy</span>(a,b,<span class="hljs-built_in">sizeof</span>(a));<br>&#125;<br><span class="hljs-type">void</span> _2()<br>&#123;<br>	<span class="hljs-built_in">memset</span>(b,<span class="hljs-number">0</span>,<span class="hljs-built_in">sizeof</span>(b));<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">500</span>;i++)<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=<span class="hljs-number">500</span>;j++)<br>			b[i+j<span class="hljs-number">-1</span>]+=f[i]*f[j];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=<span class="hljs-number">500</span>;i++)<br>	&#123;<br>		b[i+<span class="hljs-number">1</span>]+=b[i]/<span class="hljs-number">10</span>;<br>		b[i]%=<span class="hljs-number">10</span>;<br>	&#125;<br>	<span class="hljs-built_in">memcpy</span>(f,b,<span class="hljs-built_in">sizeof</span>(f));<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">register</span> <span class="hljs-type">int</span> x=<span class="hljs-number">0</span>,f=<span class="hljs-number">0</span>;<span class="hljs-keyword">register</span> <span class="hljs-type">char</span> ch=<span class="hljs-built_in">getchar</span>();<br>	<span class="hljs-keyword">while</span>(ch&lt;<span class="hljs-string">&#x27;0&#x27;</span> || ch&gt;<span class="hljs-string">&#x27;9&#x27;</span>)f|=ch==<span class="hljs-string">&#x27;-&#x27;</span>,ch=<span class="hljs-built_in">getchar</span>();<br>	<span class="hljs-keyword">while</span>(ch&gt;=<span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; ch&lt;=<span class="hljs-string">&#x27;9&#x27;</span>)x=(x&lt;&lt;<span class="hljs-number">3</span>)+(x&lt;&lt;<span class="hljs-number">1</span>)+(ch^<span class="hljs-number">48</span>),ch=<span class="hljs-built_in">getchar</span>();<br>	<span class="hljs-keyword">return</span> f?-x:x;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> p=<span class="hljs-built_in">read</span>();<br>	cout&lt;&lt;(<span class="hljs-type">int</span>)(<span class="hljs-built_in">log10</span>(<span class="hljs-number">2</span>)*p+<span class="hljs-number">1</span>)&lt;&lt;endl;<br>	a[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span>;f[<span class="hljs-number">1</span>]=<span class="hljs-number">2</span>;<br>	<span class="hljs-keyword">while</span>(p!=<span class="hljs-number">0</span>)<br>	&#123;<br>		<span class="hljs-keyword">if</span>(p%<span class="hljs-number">2</span>==<span class="hljs-number">1</span>)_1();<br>		p/=<span class="hljs-number">2</span>;<br>		_2();<br>	&#125;<br>	a[<span class="hljs-number">1</span>]-=<span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">500</span>;i&gt;=<span class="hljs-number">1</span>;i--)<br>		<span class="hljs-keyword">if</span>(i!=<span class="hljs-number">500</span> &amp;&amp; i%<span class="hljs-number">50</span>==<span class="hljs-number">0</span>)cout&lt;&lt;endl&lt;&lt;a[i];<br>			<span class="hljs-keyword">else</span> cout&lt;&lt;a[i];<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><link rel="stylesheet" href="/css/bilicard.css" type="text/css">
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> P=<span class="hljs-number">1e9</span>+<span class="hljs-number">7</span>;<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">register</span> <span class="hljs-type">int</span> x=<span class="hljs-number">0</span>,f=<span class="hljs-number">0</span>;<span class="hljs-keyword">register</span> <span class="hljs-type">char</span> ch=<span class="hljs-built_in">getchar</span>();<br>	<span class="hljs-keyword">while</span>(ch&lt;<span class="hljs-string">&#x27;0&#x27;</span> || ch&gt;<span class="hljs-string">&#x27;9&#x27;</span>)f|=ch==<span class="hljs-string">&#x27;-&#x27;</span>,ch=<span class="hljs-built_in">getchar</span>();<br>	<span class="hljs-keyword">while</span>(ch&gt;=<span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; ch&lt;=<span class="hljs-string">&#x27;9&#x27;</span>)x=(x&lt;&lt;<span class="hljs-number">3</span>)+(x&lt;&lt;<span class="hljs-number">1</span>)+(ch^<span class="hljs-number">48</span>),ch=<span class="hljs-built_in">getchar</span>();<br>	<span class="hljs-keyword">return</span> f?-x:x;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-type">int</span> n=<span class="hljs-built_in">read</span>();<br>	<span class="hljs-type">int</span> ans=<span class="hljs-number">1</span>,_2=<span class="hljs-number">2</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=n;i++)<br>	&#123;<br>		_2*=<span class="hljs-number">2</span>;<br>		<span class="hljs-type">int</span> x=_2<span class="hljs-number">-1</span>;<br>		_2%=P;<br>		x%=P;<br>		ans*=x;<br>		ans%=P;<br>	&#125;<br>	cout&lt;&lt;ans;<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<link rel="stylesheet" href="/css/bilicard.css" type="text/css">
                 
               </div>
             
@@ -361,8 +375,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>P1045 题解</div>
-      <div>http://qwqzwhy.github.io/2022/08/08/P1045-题解/</div>
+      <div>P8474 题解</div>
+      <div>http://qwqzwhy.github.io/2022/08/15/P8474-题解/</div>
     </div>
     <div class="license-meta">
       
@@ -374,7 +388,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年8月8日</div>
+          <div>2022年8月15日</div>
         </div>
       
       
@@ -404,18 +418,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/12/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="动态规划学习笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">动态规划学习笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/08/P1966-%E9%A2%98%E8%A7%A3/" title="P1966 题解">
-                        <span class="hidden-mobile">P1966 题解</span>
+                      <a href="/2022/08/12/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="动态规划学习笔记">
+                        <span class="hidden-mobile">动态规划学习笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
