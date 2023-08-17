@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://cdn.jsdelivr.net/gh/QwQzWhY/blogimg@main/202308171316417.jpg">
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/QwQzWhY/blogimg@main/202308171316417.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -226,15 +226,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2023/08/17/hello-world/" target="_self">
-          Hello World
+        <a href="/2023/08/17/%E6%B4%9B%E8%B0%B7-P7767-COCI-2011-2012-5-DNA-%E9%A2%98%E8%A7%A3/" target="_self">
+          洛谷 P7767 [COCI 2011/2012
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/17/hello-world/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/17/%E6%B4%9B%E8%B0%B7-P7767-COCI-2011-2012-5-DNA-%E9%A2%98%E8%A7%A3/" target="_self">
         <div>
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+          Solution 考虑 DP。 设 \(dp_{i,0}\) 表示前 \(i\) 个字符全为 A 的最小操作次数，\(dp_{i,1}\) 表示前 \(i\) 个数全为 B 的最小操作次数。 考虑转移。 若当前位为 A 则 \(dp_{i,0}=\min(dp_{i-1,0},dp_{i-1,1}+1)\)，\(dp_{i,1}=\min(dp_{i-1,0}+1,dp_{i-1,1
         </div>
       </a>
 
@@ -242,12 +242,259 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2023-08-17 13:33" pubdate>
+            <time datetime="2023-08-17 15:23" pubdate>
               2023-08-17
             </time>
           </div>
         
         
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/08/17/CF1278B-A-and-B-%E9%A2%98%E8%A7%A3/" target="_self">
+          CF1278B A and B 题解
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/17/CF1278B-A-and-B-%E9%A2%98%E8%A7%A3/" target="_self">
+        <div>
+          Solution 对样例换一种方式解释。 样例 \(1\)： \(a=1,b=3\to a=1+2,b=3\) 此时相等，故最小操作数为 \(2\)。 样例 \(2\) 不用解释。 样例 \(3\)： \(a=30,b=20\to a=30,b=20+1+2+3+4\) 此时相等，故最小操作次数为 \(4\)。 这些样例不明确，再构造一组样例： \(a=5,b=22\to
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-17 15:22" pubdate>
+              2023-08-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/08/17/CF1393B-Applejack-and-Storages-%E9%A2%98%E8%A7%A3/" target="_self">
+          CF1393B Applejack and Storages 题解
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/17/CF1393B-Applejack-and-Storages-%E9%A2%98%E8%A7%A3/" target="_self">
+        <div>
+          Solution 注意到能拼出时必须要存在 \(2\) 组及以上的四个相同的木棍，或者 \(1\) 组及以上的四个相同的木棍和除此之外的 \(2\) 组及以上的两个相同的木棍。 同时又注意到 \(a_i\) 很小，所以可以用桶统计，同时实时更新四个相同木棍的组数和两个相同木棍的组数即可。 Code 1234567891011121314151617181920212223242526
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-17 15:22" pubdate>
+              2023-08-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/08/17/CF982C-Cut-em-all-%E9%A2%98%E8%A7%A3/" target="_self">
+          CF982C Cut &#39;em all! 题解
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/17/CF982C-Cut-em-all-%E9%A2%98%E8%A7%A3/" target="_self">
+        <div>
+          Solution 容易想到如果 \(n\) 为奇数，一定不可以（因为奇数不管怎么拆分成偶数总会剩下一个奇数），所以输出直接判定无解。 接下来只用考虑 \(n\) 为偶数的情况。 题目要求要使每一颗森林中的树的大小要为偶数，即儿子数（自己也要算上）为偶数的节点均可删除其与父亲节点的连边使得构造出的树的大小为偶数。 所以只需要 DFS 预处理儿子数，然后统计有多少个偶数即可。 注意根节点
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-17 15:21" pubdate>
+              2023-08-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/08/17/CF932B-Recursive-Queries-%E9%A2%98%E8%A7%A3/" target="_self">
+          CF932B Recursive Queries 题解
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/17/CF932B-Recursive-Queries-%E9%A2%98%E8%A7%A3/" target="_self">
+        <div>
+          Solution 注意到如果 \(Q\) 次询问每次都去算一遍会超时。 发现 \(l\) 和 \(r\) 很小，考虑预处理，同时注意到 \(k\) 最大不会超过 \(9\)，所以定义 \(c_{i,j}\) 为 \(1\) 到 \(i\) 中 \(g_i\) 为 \(k\) 的个数，预处理所有的 \(c\) 即可。 明显不会超时。 Code 1234567891011121314151
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-17 15:20" pubdate>
+              2023-08-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/08/17/%E6%B4%9B%E8%B0%B7-P9539-%E3%80%8CAWOI-Round-2-B%E3%80%8D%E6%A0%91%E5%AD%A6-%E9%A2%98%E8%A7%A3/" target="_self">
+          洛谷 P9539 「AWOI Round 2 B」树学 题解
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/17/%E6%B4%9B%E8%B0%B7-P9539-%E3%80%8CAWOI-Round-2-B%E3%80%8D%E6%A0%91%E5%AD%A6-%E9%A2%98%E8%A7%A3/" target="_self">
+        <div>
+          Solution 题目要求字典序最小，所以一定要尽可能多的 \(a\)，而且要尽可能靠前。 所以我们只需修改不是 \(a\) 的位置为 \(a\) 即可。 但若 \(a\) 的个数比 \(r\) 大，我们就需要将多余的 \(a\) 手动改为 \(b\) 并在接下来的修改中保持不变，所以定义一个 \(vis_i\) 表示是否一定不能修改。 注意这里要从后往前考虑，而修改要从前往后考虑。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-17 15:19" pubdate>
+              2023-08-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/08/17/%E6%B4%9B%E8%B0%B7-P9541-%E3%80%8CAWOI-Round-2-D%E3%80%8D%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2-%E9%A2%98%E8%A7%A3/" target="_self">
+          洛谷 P9541 「AWOI Round 2 D」数字三角形 题解
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/17/%E6%B4%9B%E8%B0%B7-P9541-%E3%80%8CAWOI-Round-2-D%E3%80%8D%E6%95%B0%E5%AD%97%E4%B8%89%E8%A7%92%E5%BD%A2-%E9%A2%98%E8%A7%A3/" target="_self">
+        <div>
+          Solution 通过题目意思发现，有三种情况：  没有旋转的初始情况 旋转一次的情况 旋转两次的情况  我们考虑怎么处理初始情况，其他情况同理。 首先，我们发现经过数和最大一定可以保证是每行的最大值的总和，所以只要计算最小的消耗就可以了。 考虑 DP，设 \(dp_{i,j}\) 表示从上往下走到 \(i,j\) 时使每行都取最大值时的最小消耗。 容易想到如果当前的数就是
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-17 15:18" pubdate>
+              2023-08-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%A2%98%E8%A7%A3/">#题解</a>
+            
+          </div>
         
       </div>
     </article>
