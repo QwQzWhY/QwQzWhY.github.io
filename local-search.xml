@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>洛谷 P9548 「PHOI-1」雨纷纷 题解</title>
+    <link href="/2023/08/17/%E6%B4%9B%E8%B0%B7-P9548-%E3%80%8CPHOI-1%E3%80%8D%E9%9B%A8%E7%BA%B7%E7%BA%B7-%E9%A2%98%E8%A7%A3/"/>
+    <url>/2023/08/17/%E6%B4%9B%E8%B0%B7-P9548-%E3%80%8CPHOI-1%E3%80%8D%E9%9B%A8%E7%BA%B7%E7%BA%B7-%E9%A2%98%E8%A7%A3/</url>
+    
+    <content type="html"><![CDATA[<h2 id="solution">Solution</h2><p>很容易想到如果 <span class="math inline">\(n\)</span> 为 <spanclass="math inline">\(x\)</span> 的倍数且 <spanclass="math inline">\(m\)</span> 为 <spanclass="math inline">\(y\)</span> 的倍数时只需要在每个 <spanclass="math inline">\(x\times y\)</span> 的矩形里撒一个点即可。</p><p>考虑不为倍数时的情况。</p><p>如下图：</p><p><imgsrc="https://cdn.jsdelivr.net/gh/QwQzWhY/blogimg@main/202308172012665.jpg" /></p><p>只需在 <span class="math inline">\(n\)</span> 不为 <spanclass="math inline">\(x\)</span> 倍数时多撒一个点，<spanclass="math inline">\(m\)</span> 不为 <spanclass="math inline">\(y\)</span> 倍数时再多撒一个点即可。</p><h2 id="code">Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> For(i,a,b) for(int i=(a);i&lt;=(b);i++)</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> FOR(i,a,b) for(int i=(a);i&gt;=(b);i--)</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> IOS ios::sync_with_stdio(0),cin.tie(0),cout.tie(0)</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><br><span class="hljs-type">int</span> n,m,x,y,k;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>IOS;<br>cin&gt;&gt;n&gt;&gt;m&gt;&gt;x&gt;&gt;y&gt;&gt;k;<br><span class="hljs-type">int</span> sum=(n/x)*(m/y)<span class="hljs-number">-1</span>;<br><span class="hljs-keyword">if</span>(n%x!=<span class="hljs-number">0</span>)sum++;<br><span class="hljs-keyword">if</span>(m%y!=<span class="hljs-number">0</span>)sum++;<br>cout&lt;&lt;(sum<span class="hljs-number">-1</span>)/k+<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;sum;<br><br><span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>题解</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>洛谷 P7767 DNA 题解</title>
     <link href="/2023/08/17/%E6%B4%9B%E8%B0%B7-P7767-COCI-2011-2012-5-DNA-%E9%A2%98%E8%A7%A3/"/>
     <url>/2023/08/17/%E6%B4%9B%E8%B0%B7-P7767-COCI-2011-2012-5-DNA-%E9%A2%98%E8%A7%A3/</url>
