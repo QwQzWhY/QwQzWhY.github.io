@@ -16,15 +16,15 @@
   <meta name="author" content="QwQzWhY">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Solution 很容易想到如果 \(n\) 为 \(x\) 的倍数且 \(m\) 为 \(y\) 的倍数时只需要在每个 \(x\times y\) 的矩形里撒一个点即可。 考虑不为倍数时的情况。 如下图：  只需在 \(n\) 不为 \(x\) 倍数时多撒一个点，\(m\) 不为 \(y\) 倍数时再多撒一个点即可。 Code 123456789101112131415161718">
+    <meta name="description" content="Solution 很容易发现如果 \(p\ge 2n\) 时「共振」的次数一定为 \(0\)，所以这时随便怎么输出都行。 考虑一般情况。 首先为 \(p\) 的倍数的数肯定无法与其他不是 \(p\) 的倍数的数组，所以先输出是 \(p\) 的倍数的数。 然后可以想到只需要枚举一个 \(i\) 表示余数，发现只需要枚举 \(1\) 到 \(p\div 2\) 就行（因为要两两余数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="洛谷 P9548 「PHOI-1」雨纷纷 题解">
-<meta property="og:url" content="http://example.com/2023/08/17/%E6%B4%9B%E8%B0%B7-P9548-%E3%80%8CPHOI-1%E3%80%8D%E9%9B%A8%E7%BA%B7%E7%BA%B7-%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:title" content="洛谷 P9573 「TAOI-2」核心共振 题解">
+<meta property="og:url" content="http://example.com/2023/08/22/%E6%B4%9B%E8%B0%B7-P9573-%E3%80%8CTAOI-2%E3%80%8D%E6%A0%B8%E5%BF%83%E5%85%B1%E6%8C%AF-%E9%A2%98%E8%A7%A3/index.html">
 <meta property="og:site_name" content="QwQzWhY&#39;s Blog">
-<meta property="og:description" content="Solution 很容易想到如果 \(n\) 为 \(x\) 的倍数且 \(m\) 为 \(y\) 的倍数时只需要在每个 \(x\times y\) 的矩形里撒一个点即可。 考虑不为倍数时的情况。 如下图：  只需在 \(n\) 不为 \(x\) 倍数时多撒一个点，\(m\) 不为 \(y\) 倍数时再多撒一个点即可。 Code 123456789101112131415161718">
+<meta property="og:description" content="Solution 很容易发现如果 \(p\ge 2n\) 时「共振」的次数一定为 \(0\)，所以这时随便怎么输出都行。 考虑一般情况。 首先为 \(p\) 的倍数的数肯定无法与其他不是 \(p\) 的倍数的数组，所以先输出是 \(p\) 的倍数的数。 然后可以想到只需要枚举一个 \(i\) 表示余数，发现只需要枚举 \(1\) 到 \(p\div 2\) 就行（因为要两两余数">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-17T12:08:22.000Z">
-<meta property="article:modified_time" content="2023-08-21T12:43:47.415Z">
+<meta property="article:published_time" content="2023-08-22T05:18:06.000Z">
+<meta property="article:modified_time" content="2023-08-22T05:28:15.735Z">
 <meta property="article:author" content="QwQzWhY">
 <meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>洛谷 P9548 「PHOI-1」雨纷纷 题解 - QwQzWhY&#39;s Blog</title>
+  <title>洛谷 P9573 「TAOI-2」核心共振 题解 - QwQzWhY&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="洛谷 P9548 「PHOI-1」雨纷纷 题解"></span>
+            <span id="subtitle" data-typed-text="洛谷 P9573 「TAOI-2」核心共振 题解"></span>
           
         </div>
 
@@ -203,8 +203,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-17 20:08" pubdate>
-          2023年8月17日 晚上
+        <time datetime="2023-08-22 13:18" pubdate>
+          2023年8月22日 下午
         </time>
       </span>
     
@@ -215,7 +215,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          585 字
+          1.1k 字
         
       </span>
     
@@ -226,7 +226,7 @@
         
         
         
-          5 分钟
+          9 分钟
         
       </span>
     
@@ -263,27 +263,38 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">洛谷 P9548 「PHOI-1」雨纷纷 题解</h1>
+            <h1 id="seo-header">洛谷 P9573 「TAOI-2」核心共振 题解</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="solution">Solution</h2>
-<p>很容易想到如果 <span class="math inline">\(n\)</span> 为 <span
-class="math inline">\(x\)</span> 的倍数且 <span
-class="math inline">\(m\)</span> 为 <span
-class="math inline">\(y\)</span> 的倍数时只需要在每个 <span
-class="math inline">\(x\times y\)</span> 的矩形里撒一个点即可。</p>
-<p>考虑不为倍数时的情况。</p>
-<p>如下图：</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/QwQzWhY/blogimg/202308172012665.jpg" srcset="/img/loading.gif" lazyload /></p>
-<p>只需在 <span class="math inline">\(n\)</span> 不为 <span
-class="math inline">\(x\)</span> 倍数时多撒一个点，<span
-class="math inline">\(m\)</span> 不为 <span
-class="math inline">\(y\)</span> 倍数时再多撒一个点即可。</p>
+<p>很容易发现如果 <span class="math inline">\(p\ge 2n\)</span>
+时「共振」的次数一定为 <span
+class="math inline">\(0\)</span>，所以这时随便怎么输出都行。</p>
+<p>考虑一般情况。</p>
+<p>首先为 <span class="math inline">\(p\)</span>
+的倍数的数肯定无法与其他不是 <span class="math inline">\(p\)</span>
+的倍数的数组，所以先输出是 <span class="math inline">\(p\)</span>
+的倍数的数。</p>
+<p>然后可以想到只需要枚举一个 <span class="math inline">\(i\)</span>
+表示余数，发现只需要枚举 <span class="math inline">\(1\)</span> 到 <span
+class="math inline">\(p\div 2\)</span>
+就行（因为要两两余数配对），然后从 <span
+class="math inline">\(i\)</span> 开始，每次加 <span
+class="math inline">\(p\)</span> 保证余数不变，然后判断这个数有没有超
+<span
+class="math inline">\(n\)</span>，如果没有就输出，然后再判断与之余数相对应的数，容易想到（假设这个数为
+<span class="math inline">\(j\)</span>）对应的数即为 <span
+class="math inline">\(j-i+p-i\)</span>，然后和 <span
+class="math inline">\(j\)</span> 一样的判断即可。</p>
+<p>注意如果 <span class="math inline">\(i=p-i\)</span> 时不用考虑 <span
+class="math inline">\(j\)</span> 对应的数，因为 <span
+class="math inline">\(j\)</span> 对应的数的余数也是 <span
+class="math inline">\(i\)</span>​。</p>
+<p>可以证明不会有遗漏的数。</p>
 <h2 id="code">Code</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> For(i,a,b) for(int i=(a);i&lt;=(b);i++)</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> FOR(i,a,b) for(int i=(a);i&gt;=(b);i--)</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> IOS ios::sync_with_stdio(0),cin.tie(0),cout.tie(0)</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> int long long</span><br><br><span class="hljs-type">int</span> n,m,x,y,k;<br><span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	IOS;<br>	cin&gt;&gt;n&gt;&gt;m&gt;&gt;x&gt;&gt;y&gt;&gt;k;<br>	<span class="hljs-type">int</span> sum=(n/x)*(m/y)<span class="hljs-number">-1</span>;<br>	<span class="hljs-keyword">if</span>(n%x!=<span class="hljs-number">0</span>)sum++;<br>	<span class="hljs-keyword">if</span>(m%y!=<span class="hljs-number">0</span>)sum++;<br>	cout&lt;&lt;(sum<span class="hljs-number">-1</span>)/k+<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;sum;<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-meta">#<span class="hljs-keyword">define</span> For(i,a,b) for(int i=(a);i&lt;=(b);i++)</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> FOR(i,a,b) for(int i=(a);i&gt;=(b);i--)</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> IOS ios::sync_with_stdio(0),cin.tie(0),cout.tie(0)</span><br><br><span class="hljs-type">int</span> n,p;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">solve</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	cin&gt;&gt;n&gt;&gt;p;<br>	<span class="hljs-keyword">if</span>(p&gt;=<span class="hljs-number">2</span>*n)&#123;<span class="hljs-built_in">For</span>(i,<span class="hljs-number">1</span>,n)cout&lt;&lt;i&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;cout&lt;&lt;<span class="hljs-string">&quot;\n&quot;</span>;<span class="hljs-keyword">return</span> ;&#125;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=p;i&lt;=n;i+=p)cout&lt;&lt;i&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>	<span class="hljs-built_in">For</span>(i,<span class="hljs-number">1</span>,p/<span class="hljs-number">2</span>)<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=i;j&lt;=n;j+=p)<br>		&#123;<br>			cout&lt;&lt;j&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>			<span class="hljs-keyword">if</span>(i!=p-i)<br>				<span class="hljs-keyword">if</span>(j+p<span class="hljs-number">-2</span>*i&lt;=n)<br>					cout&lt;&lt;j-i+p-i&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>		&#125;<br>	cout&lt;&lt;<span class="hljs-string">&quot;\n&quot;</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	IOS;<br>	<span class="hljs-type">int</span> T;cin&gt;&gt;T;<br>	<span class="hljs-keyword">while</span>(T--)<span class="hljs-built_in">solve</span>();<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -308,8 +319,8 @@ class="math inline">\(y\)</span> 倍数时再多撒一个点即可。</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>洛谷 P9548 「PHOI-1」雨纷纷 题解</div>
-      <div>http://example.com/2023/08/17/洛谷-P9548-「PHOI-1」雨纷纷-题解/</div>
+      <div>洛谷 P9573 「TAOI-2」核心共振 题解</div>
+      <div>http://example.com/2023/08/22/洛谷-P9573-「TAOI-2」核心共振-题解/</div>
     </div>
     <div class="license-meta">
       
@@ -321,7 +332,7 @@ class="math inline">\(y\)</span> 倍数时再多撒一个点即可。</p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月17日</div>
+          <div>2023年8月22日</div>
         </div>
       
       
@@ -353,18 +364,12 @@ class="math inline">\(y\)</span> 倍数时再多撒一个点即可。</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/22/%E6%B4%9B%E8%B0%B7-P9573-%E3%80%8CTAOI-2%E3%80%8D%E6%A0%B8%E5%BF%83%E5%85%B1%E6%8C%AF-%E9%A2%98%E8%A7%A3/" title="洛谷 P9573 「TAOI-2」核心共振 题解">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">洛谷 P9573 「TAOI-2」核心共振 题解</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/17/%E6%B4%9B%E8%B0%B7-P7767-COCI-2011-2012-5-DNA-%E9%A2%98%E8%A7%A3/" title="洛谷 P7767 DNA 题解">
-                        <span class="hidden-mobile">洛谷 P7767 DNA 题解</span>
+                      <a href="/2023/08/17/%E6%B4%9B%E8%B0%B7-P9548-%E3%80%8CPHOI-1%E3%80%8D%E9%9B%A8%E7%BA%B7%E7%BA%B7-%E9%A2%98%E8%A7%A3/" title="洛谷 P9548 「PHOI-1」雨纷纷 题解">
+                        <span class="hidden-mobile">洛谷 P9548 「PHOI-1」雨纷纷 题解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -387,7 +392,7 @@ class="math inline">\(y\)</span> 倍数时再多撒一个点即可。</p>
         var options = Object.assign(
           {"clientID":"729ee52aeeb30c3da1d6","clientSecret":"b79979a613cae5f6de2528707e4222091a41b631","repo":"Comment","owner":"QwQzWhY","admin":["QwQzWhY"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
           {
-            id: '5491ca208a2f81f053ef1d6ac3f47af9'
+            id: '2efff67e77742bf5ff3a6273edb11dc7'
           }
         )
         var gitalk = new Gitalk(options);
